@@ -4,6 +4,16 @@
     font-weight: 400;
 }
 
+@font-face {
+    font-family: "B612";
+    src: url('./fonts/B612/B612-Bold.ttf');
+    font-weight: bold;
+}
+
+:root {
+    --element-bg: #e4e4e4;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -81,31 +91,55 @@ header subtitle {
 
 #controls .control-group label {
     font-family: "B612", sans-serif;
+    margin-top: 0.25vh;
 }
 
 /******************************
  * TEXT
  ******************************/
 
-
 #text-container {
     width: 75vw;
-    margin: 1vh auto;
-    height: 50vh;
-    display: flex;
-    flex-direction: row;
+    margin: 0.5vh auto;
+    height: 70vh;
+    display: grid;
+    grid-template-areas: 
+        "ctrls ctrls ctrls"
+        "inpt arrow outpt";
+    grid-template-columns: 1fr 10vw 1fr;
+    align-items: start;
     column-gap: 20px;
 }
 
 #text-container div {
-    background-color: #e4e4e4;
-    height: 100%;
-    width: 50%;
+    width: 100%;
+}
+
+#text-container #control-bar {
+    grid-area: ctrls;
+    margin-bottom: 0.5vh;
+    display: grid;
+    width: 75vw;
+    grid-template-columns: 1fr 10vw 1fr;
+}
+
+#text-container #control-bar svg {
+    
+    cursor: pointer;
+}
+
+#text-container #control-bar #preview-controls {
+    background-color: var(--element-bg);
+    grid-column-start: 3;
+    justify-self: end;
+
 }
 
 #text-container #text-separator {
+    grid-area: arrow;
     background: transparent;
     width: 10vw;
+    height: 65vh;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -115,12 +149,18 @@ header subtitle {
     fill: #e4e4e4;
 }
 
+#text-container #input-text {
+    grid-area: inpt;
+    height: 65vh;
+}
+
 #text-container #input-text #input-area {
     width: 100%;
     height: 100%;
     resize: none;
     font-size: 1rem;
     border: 0;
+    padding: 1rem;
 }
 
 #text-container #input-text button {
@@ -128,6 +168,25 @@ header subtitle {
     font-size: 1.1rem;
     background-color: #770000;
     border: 0;
+}
+
+#text-container #output-text {
+    background-color: #e4e4e4;
+    font-family: "B612", sans-serif;
+    font-size: var(--preview-size);
+    height: 65vh;
+    padding: 1rem;
+    border: 0;
+    overflow: auto;
+    
+}
+
+#text-container #output-text .bold-text {
+    font-weight: bold;
+}
+
+#text-container #preview-controls {
+
 }
 
 /*
